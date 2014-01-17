@@ -1,13 +1,7 @@
 library(shiny)
-library("ROAuth")
-library("twitteR")
-library("wordcloud")
-library("tm")
+
 source("RedTwitFuns.R")
 
-latlongdat <- read.csv("citylatlong.csv", stringsAsFactors=FALSE)
-load("my_oauth.Rdata")
-registerTwitterOAuth(twitCred)
 
 # Define server logic for random distribution application
 shinyServer(function(input, output) {
@@ -38,7 +32,7 @@ shinyServer(function(input, output) {
     
     if(input$gogogo!=0){
     pal2 <- brewer.pal(8,"Dark2")
-    wordcloud(my_corpus(),min.freq=2,max.words=100, random.order=T, colors=pal2, scale = c(7,.75))
+    wordcloud(my_corpus(),min.freq=2,max.words=150, random.order=FALSE, colors=pal2, scale = c(7,.8))
     }else NULL
   })
   
