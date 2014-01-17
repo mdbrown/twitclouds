@@ -5,6 +5,7 @@ library("wordcloud")
 library("tm")
 source("RedTwitFuns.R")
 
+latlongdat <- read.csv("citylatlong.csv", stringsAsFactors=FALSE)
 load("my_oauth.Rdata")
 registerTwitterOAuth(twitCred)
 
