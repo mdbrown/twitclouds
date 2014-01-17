@@ -9,7 +9,7 @@ library("tm")
 shinyUI(pageWithSidebar(
   
   # Application title
-  headerPanel("Redfin Twitter Wordclouds"),
+  headerPanel("Fun with twitter wordclouds"),
   
   # Sidebar with controls to select the random distribution type
   # and number of observations to generate. Note the use of the br()
@@ -28,8 +28,13 @@ shinyUI(pageWithSidebar(
                       "Portland", 
                       "San Francisco",
                       "none")),
+    helpText(p("If a city is chosen, only tweets within 25 miles of the city center will be included in the search. ")),
     br(),
-    actionButton(inputId = "gogogo", "Create wordcloud!")
+    actionButton(inputId = "gogogo", "Create wordcloud!"), 
+    br(), 
+    br(), 
+    p(" "),
+    HTML("<p>Created by mdbrown. <a href='https://github.com/mdbrown/twitteRedfin'>Source code on Github</a></p>")
     
     #numericInput("radius", 
      #           "radius", 
@@ -53,9 +58,10 @@ shinyUI(pageWithSidebar(
       tags$link(rel = 'stylesheet', type = 'text/css', href = 'stylesheet.css')
     ),
     tabsetPanel(
-      tabPanel("wordcloud", htmlOutput("tweetCount"), plotOutput("wordcloud", height = "600px")), 
+      tabPanel("wordcloud", htmlOutput("tweetCount"), plotOutput("wordcloud", height = "800px")), 
       tabPanel("table", h3("Top 25 words..."), tableOutput("table")), 
-      tabPanel("notes", HTML("<p>Built using <a href = \"http://www.rstudio.com/shiny/\">shiny</a> and the <a href = \"http://cran.r-project.org/web/packages/twitteR/index.html\">twitteR</a> R package. Also thanks to Dave for <a href = \"http://davetang.org/muse/2013/04/06/using-the-r_twitter-package/\"> this</a> helpful blog post.</p>" ))
+      tabPanel("notes", p("To reconfigure a wordcloud once it has been created, try resizing your browser screen."), br(), 
+               HTML("<p>This app was built using <a href = \"http://www.rstudio.com/shiny/\">shiny</a> and the <a href = \"http://cran.r-project.org/web/packages/twitteR/index.html\">twitteR</a> R package. Also thanks to Dave for <a href = \"http://davetang.org/muse/2013/04/06/using-the-r_twitter-package/\"> this</a> helpful blog post.</p>" ))
     ), 
     conditionalPanel("updateBusy() || $('html').hasClass('shiny-busy')",
                    id='progressIndicator',
