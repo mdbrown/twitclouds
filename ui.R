@@ -15,7 +15,7 @@ shinyUI(pageWithSidebar(
   # and number of observations to generate. Note the use of the br()
   # element to introduce extra vertical spacing
   sidebarPanel(
-    textInput("searchTerm", "Twitter search query:", '#Redfin OR redfin OR @redfin'),
+    textInput("searchTerm", "Twitter search query:", '#seahawks OR seahawks'),# '#Redfin OR redfin OR @redfin'
     
     selectInput("city", "Choose a city:",
                  list("Seattle",
